@@ -3,14 +3,16 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+      "@/*": ["./src/*"]
+    },
+    "allowJs": false
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".storybook/**/*",
+    "app.config.ts",
+    "jest.config.ts",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
   ]
