@@ -1,18 +1,16 @@
+import { useSession } from '@/hooks/useSession';
+import { SignInScreen } from '@/screens/SignInScreen';
 import Constants from 'expo-constants';
-import { Text, View } from 'react-native';
+import { Redirect } from 'expo-router';
 
 const App = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
-  );
+  const { session } = useSession();
+
+  if (session) {
+    return <Redirect href="/home" />;
+  }
+
+  return <SignInScreen />;
 };
 
 const AppEntryPoint =
@@ -20,5 +18,4 @@ const AppEntryPoint =
     ? require('../../.storybook').default
     : App;
 
-// eslint-disable-next-line import/no-default-export
 export default AppEntryPoint;
