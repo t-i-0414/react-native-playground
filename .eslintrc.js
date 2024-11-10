@@ -38,6 +38,7 @@ module.exports = {
         'func-style': ['error', 'expression'],
         'object-shorthand': ['error', 'always'],
         'newline-before-return': 'error',
+        'arrow-body-style': ['error', 'as-needed'],
 
         // React
         'react/react-in-jsx-scope': 'off',
@@ -49,6 +50,12 @@ module.exports = {
           },
         ],
         'react/no-unescaped-entities': 'off',
+      },
+    },
+    {
+      files: ['src/app/**/*.ts', 'src/app/**/*.tsx'],
+      rules: {
+        'import/no-default-export': 'off',
       },
     },
     {
