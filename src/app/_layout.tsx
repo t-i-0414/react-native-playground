@@ -1,9 +1,9 @@
 import { SessionProvider } from '@/providers/SessionProvider';
 import { Slot } from 'expo-router';
 
-const Root = () => (
+const RootLayout = () => (
   <SessionProvider>
     <Slot />
   </SessionProvider>
 );
-export default Root;
+export default RootLayout;
