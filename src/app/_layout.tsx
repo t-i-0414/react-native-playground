@@ -1,9 +1,9 @@
-import { Stack } from 'expo-router';
+import { SessionProvider } from '@/providers/SessionProvider';
+import { Slot } from 'expo-router';
 
-export const RootLayout = () => {
-  return (
-    <Stack>
-      <Stack.Screen name="index" />
-    </Stack>
-  );
-};
+const Root = () => (
+  <SessionProvider>
+    <Slot />
+  </SessionProvider>
+);
+export default Root;
