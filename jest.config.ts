@@ -15,6 +15,7 @@ const config: Config = {
     'src/**/*.{ts,tsx,stories.tsx}',
     '!src/**/*.{test,spec}.{ts,tsx}',
     '!src/**/index.ts',
+    '!src/app/*.{ts,tsx}',
   ],
 };
 
