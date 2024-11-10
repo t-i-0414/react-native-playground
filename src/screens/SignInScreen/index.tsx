@@ -1,6 +1,10 @@
+import React from 'react';
 import { Text, View } from 'react-native';
 
-export const SignInScreen = () => (
+type Props = {
+  hasExpired?: boolean;
+};
+export const SignInScreen: React.FC<Props> = ({ hasExpired }) => (
   <View
     style={{
       flex: 1,
@@ -9,5 +13,6 @@ export const SignInScreen = () => (
     }}
   >
     <Text>Sign in</Text>
+    {hasExpired && <Text>Session expired</Text>}
   </View>
 );

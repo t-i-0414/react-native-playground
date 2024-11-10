@@ -1,16 +1,21 @@
 import { useSession } from '@/hooks/useSession';
 import { SignInScreen } from '@/screens/SignInScreen';
 import Constants from 'expo-constants';
-import { Redirect } from 'expo-router';
+import { Redirect, useLocalSearchParams } from 'expo-router';
+
+export type UrlParams = {
+  expiring?: string;
+};
 
 const App = () => {
   const { session } = useSession();
+  const { expiring } = useLocalSearchParams<UrlParams>();
 
   if (session) {
     return <Redirect href="/home" />;
   }
 
-  return <SignInScreen />;
+  return <SignInScreen hasExpired={expiring === 'true'} />;
 };
 
 const AppEntryPoint =
