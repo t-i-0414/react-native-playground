@@ -12,10 +12,10 @@ const config: Config = {
     },
   },
   collectCoverageFrom: [
-    'src/**/*.{ts,tsx,stories.tsx}',
-    '!src/**/*.{test,spec}.{ts,tsx}',
-    '!src/**/index.ts',
-    '!src/app/*.{ts,tsx}',
+    'src/**/*.{ts,tsx}',
+    '!src/**/*.{test,spec,stories}.{ts,tsx}',
+    '!src/app/**/*.{ts,tsx}',
+    '!src/app/**/_layout.{ts,tsx}',
   ],
 };
 

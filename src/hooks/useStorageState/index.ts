@@ -31,9 +31,12 @@ export const useStorageState = (
   }, [key]);
 
   const setValue = useCallback(
-    async (value: StorageValue) => {
+    (value: StorageValue) => {
       setState(value);
-      await setStorageItemAsync(key, value);
+      const set = async () => {
+        await setStorageItemAsync(key, value);
+      };
+      set();
     },
     [key],
   );

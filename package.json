@@ -50,6 +50,7 @@
     "@storybook/addon-ondevice-actions": "^8.4.1",
     "@storybook/addon-ondevice-controls": "^8.4.1",
     "@storybook/react-native": "^8.4.1",
+    "@testing-library/react-native": "^12.8.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
