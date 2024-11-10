@@ -1,10 +1,10 @@
-import { MyButton } from './Button';
+import { Button } from '.';
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
 
 const meta = {
-  title: 'MyButton',
-  component: MyButton,
+  title: 'Button',
+  component: Button,
   argTypes: {
     onPress: { action: 'pressed the button' },
   },
@@ -18,7 +18,7 @@ const meta = {
       </View>
     ),
   ],
-} satisfies Meta<typeof MyButton>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 
