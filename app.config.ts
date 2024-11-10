@@ -2,7 +2,7 @@ import { ConfigContext, ExpoConfig } from 'expo/config';
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   const baseConfig: ExpoConfig = {
-    name: 'react-native-playground-mobile',
+    name: 'react-native-playground',
     slug: 'react-native-playground',
     version: '1.0.0',
     orientation: 'portrait',
