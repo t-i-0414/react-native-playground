@@ -1,5 +1,5 @@
 import { useStorageState } from './';
-import { renderHook, waitFor } from '@testing-library/react-native';
+import { act, renderHook } from '@testing-library/react-native';
 
 describe('useStorageState', () => {
   beforeEach(() => {
@@ -7,44 +7,74 @@ describe('useStorageState', () => {
   });
 
   const key = 'session';
-  const value = 'testValue';
 
-  it('should return the initial state and a function to set the state', async () => {
-    const { result } = renderHook(() => useStorageState(key));
+  describe('getStorageItem', () => {
+    it('should return the storage value', async () => {
+      jest.spyOn(require('expo-secure-store'), 'getItemAsync');
 
-    expect(result.current).toEqual([[true, null], expect.any(Function)]);
-  });
+      const {
+        result: {
+          current: { getStorageItem },
+        },
+      } = renderHook(() => useStorageState());
 
-  it('should get the state', async () => {
-    jest
-      .spyOn(require('expo-secure-store'), 'getItemAsync')
-      .mockResolvedValue(value);
-    const { result } = renderHook(() => useStorageState(key));
+      act(() => {
+        getStorageItem(key);
+      });
 
-    waitFor(() => {
-      expect(result.current).toEqual([[false, value], expect.any(Function)]);
+      expect(require('expo-secure-store').getItemAsync).toHaveBeenCalledTimes(
+        1,
+      );
+      expect(require('expo-secure-store').getItemAsync).toHaveBeenCalledWith(
+        key,
+      );
     });
   });
 
-  it('should remove the state', async () => {
-    jest
-      .spyOn(require('expo-secure-store'), 'getItemAsync')
-      .mockResolvedValue(value);
-    jest.spyOn(require('expo-secure-store'), 'deleteItemAsync');
+  describe('setStorageItem', () => {
+    it('should set the storage item', async () => {
+      jest.spyOn(require('expo-secure-store'), 'setItemAsync');
 
-    const { result } = renderHook(() => useStorageState(key));
+      const {
+        result: {
+          current: { setStorageItem },
+        },
+      } = renderHook(() => useStorageState());
 
-    const [, setValue] = result.current;
-    setValue(null);
+      act(() => {
+        setStorageItem(key, 'testValue');
+      });
 
-    expect(require('expo-secure-store').deleteItemAsync).toHaveBeenCalledTimes(
-      1,
-    );
-    expect(require('expo-secure-store').deleteItemAsync).toHaveBeenCalledWith(
-      key,
-    );
-    waitFor(() => {
-      expect(result.current).toEqual([[false, null], expect.any(Function)]);
+      expect(require('expo-secure-store').setItemAsync).toHaveBeenCalledTimes(
+        1,
+      );
+      expect(require('expo-secure-store').setItemAsync).toHaveBeenCalledWith(
+        key,
+        'testValue',
+      );
+    });
+  });
+
+  describe('removeStorageItem', () => {
+    it('should remove the storage item', async () => {
+      jest.spyOn(require('expo-secure-store'), 'deleteItemAsync');
+
+      const {
+        result: {
+          current: { removeStorageItem },
+        },
+      } = renderHook(() => useStorageState());
+
+      act(() => {
+        removeStorageItem('session');
+      });
+
+      expect(
+        require('expo-secure-store').deleteItemAsync,
+      ).toHaveBeenCalledTimes(1);
+      expect(require('expo-secure-store').deleteItemAsync).toHaveBeenCalledWith(
+        key,
+      );
     });
   });
 });

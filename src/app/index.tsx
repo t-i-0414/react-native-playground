@@ -8,8 +8,12 @@ export type UrlParams = {
 };
 
 const App = () => {
-  const { session } = useSession();
+  const { isLoading, session } = useSession();
   const { expiring } = useLocalSearchParams<UrlParams>();
+
+  if (isLoading) {
+    return null;
+  }
 
   if (session) {
     return <Redirect href="/home" />;

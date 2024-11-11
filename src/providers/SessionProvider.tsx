@@ -1,5 +1,10 @@
 import { useStorageState } from '@/hooks/useStorageState';
-import { createContext, type PropsWithChildren } from 'react';
+import {
+  createContext,
+  type PropsWithChildren,
+  useEffect,
+  useState,
+} from 'react';
 
 export const SessionContext = createContext<{
   signIn: () => void;
@@ -14,17 +19,30 @@ export const SessionContext = createContext<{
 });
 
 export const SessionProvider = ({ children }: PropsWithChildren) => {
-  const [[isLoading, session], setSession] = useStorageState('session');
+  const { getStorageItem, setStorageItem, removeStorageItem } =
+    useStorageState();
+  const [session, setSession] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const getSession = async () => {
+      const session = await getStorageItem('session');
+      setSession(session);
+      setIsLoading(false);
+    };
+    getSession();
+  }, [getStorageItem]);
 
   return (
     <SessionContext.Provider
       value={{
         signIn: () => {
-          // TODO: Implement sign in logic here.
-          setSession('xxx');
+          setSession('test');
+          setStorageItem('session', 'test');
         },
         signOut: () => {
           setSession(null);
+          removeStorageItem('session');
         },
         session,
         isLoading,

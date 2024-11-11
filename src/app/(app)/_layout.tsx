@@ -3,8 +3,16 @@ import { Slot } from 'expo-router';
 import { Redirect } from 'expo-router';
 
 const AppLayout = () => {
-  const { session } = useSession();
+  const { isLoading, session } = useSession();
 
-  return !session ? <Redirect href="/?expiring=true" /> : <Slot />;
+  if (isLoading) {
+    return null;
+  }
+
+  if (!session) {
+    return <Redirect href="/?expiring=true" />;
+  }
+
+  return <Slot />;
 };
 export default AppLayout;
