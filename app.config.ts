@@ -25,6 +25,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     plugins: [
       'expo-router',
+      'expo-font',
+      'expo-secure-store',
       [
         'expo-build-properties',
         {
@@ -44,7 +46,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       },
       storybookEnabled: process.env.STORYBOOK_ENABLED,
     },
-    owner: 'stockmark',
+    owner: 'test',
+    // @ts-expect-error : https://docs.expo.dev/guides/new-architecture/#:~:text=1-,Set,on%20target%20platforms%3A,-SDK%2052%20and
+    expo: {
+      newArchEnabled: true,
+    },
   };
 
   return {
