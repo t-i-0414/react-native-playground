@@ -40,16 +40,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     experiments: {
       typedRoutes: true,
     },
+    owner: 'takudev',
+    newArchEnabled: true,
     extra: {
       eas: {
-        projectId: 'f2816330-e002-41bc-b897-bf1074b70334',
+        projectId: 'da88fac7-88c8-4253-aad0-199edb247635',
       },
-      storybookEnabled: process.env.STORYBOOK_ENABLED,
-    },
-    owner: 'test',
-    // @ts-expect-error : https://docs.expo.dev/guides/new-architecture/#:~:text=1-,Set,on%20target%20platforms%3A,-SDK%2052%20and
-    expo: {
-      newArchEnabled: true,
+      storybookEnabled: process.env.STORYBOOK_ENABLED || false,
     },
   };
 
