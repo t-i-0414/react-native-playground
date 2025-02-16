@@ -102,12 +102,27 @@ importers:
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.3.3)
+      '@types/babel__core':
+        specifier: ~7.20.5
+        version: 7.20.5
+      '@types/eslint':
+        specifier: ~9.6.1
+        version: 9.6.1
+      '@types/eslint-config-prettier':
+        specifier: ~6.11.3
+        version: 6.11.3
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.14
       '@types/react':
         specifier: ~18.3.12
         version: 18.3.12
+      '@types/react-dom':
+        specifier: ~18.3.5
+        version: 18.3.5(@types/react@18.3.12)
+      '@types/react-native-web':
+        specifier: ~0.19.0
+        version: 0.19.0(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.9)(react@18.3.1)
       '@types/react-test-renderer':
         specifier: ^18.0.7
         version: 18.0.7
@@ -1722,6 +1737,9 @@ packages:
   '@types/cookie@0.6.0':
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
 
+  '@types/eslint-config-prettier@6.11.3':
+    resolution: {integrity: sha512-3wXCiM8croUnhg9LdtZUJQwNcQYGWxxdOWDjPe1ykCqJFPVpzAKfs/2dgSoCtAvdPeaponcWPI7mPcGGp9dkKQ==}
+
   '@types/eslint-scope@3.7.7':
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
 
@@ -1766,6 +1784,14 @@ packages:
 
   '@types/prop-types@15.7.13':
     resolution: {integrity: sha512-hCZTSvwbzWGvhqxp/RqVqwU999pBf2vp7hzIjiYOsl8wqOmUxkQ6ddw1cV3l8811+kdUFus/q4d1Y3E3SyEifA==}
+
+  '@types/react-dom@18.3.5':
+    resolution: {integrity: sha512-P4t6saawp+b/dFrUr2cvkVsfvPguwsxtH6dNIYRllMsefqFzkZk5UIjzyDOv5g1dXIPdG4Sp1yCR4Z6RCUsG/Q==}
+    peerDependencies:
+      '@types/react': ^18.0.0
+
+  '@types/react-native-web@0.19.0':
+    resolution: {integrity: sha512-HWagkGzM/k1iPBy2/xnVU9U0MN9oswZu8/2buh8bnuhwJpgt7avPoGlqT9XuFNlBbQykCg5TfEyXoUJR8tGDGg==}
 
   '@types/react-test-renderer@18.0.7':
     resolution: {integrity: sha512-1+ANPOWc6rB3IkSnElhjv6VLlKg2dSv/OWClUyZimbLsQyBn8Js9Vtdsi3UICJ2rIQ3k2la06dkB+C92QfhKmg==}
@@ -8256,6 +8282,8 @@ snapshots:
 
   '@types/cookie@0.6.0': {}
 
+  '@types/eslint-config-prettier@6.11.3': {}
+
   '@types/eslint-scope@3.7.7':
     dependencies:
       '@types/eslint': 9.6.1
@@ -8308,6 +8336,24 @@ snapshots:
       undici-types: 6.19.8
 
   '@types/prop-types@15.7.13': {}
+
+  '@types/react-dom@18.3.5(@types/react@18.3.12)':
+    dependencies:
+      '@types/react': 18.3.12
+
+  '@types/react-native-web@0.19.0(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.9)(react@18.3.1)':
+    dependencies:
+      '@types/react': 18.3.12
+      react-native: 0.76.7(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.12)(react@18.3.1)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@babel/preset-env'
+      - '@react-native-community/cli-server-api'
+      - bufferutil
+      - encoding
+      - react
+      - supports-color
+      - utf-8-validate
 
   '@types/react-test-renderer@18.0.7':
     dependencies:
